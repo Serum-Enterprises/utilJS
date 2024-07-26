@@ -63,6 +63,7 @@ class Ok extends Result {
 	#value;
 
 	constructor(value) {
+		super();
 		this.#value = value;
 	}
 
@@ -75,6 +76,7 @@ class Err extends Result {
 	#error;
 
 	constructor(error) {
+		super();
 		this.#error = error;
 	}
 

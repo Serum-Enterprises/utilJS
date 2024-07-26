@@ -11,24 +11,24 @@ class Result {
 	}
 
 	isOk() {
-		return this instanceof Ok;
+		return (this instanceof Ok);
 	}
 	isErr() {
-		return this instanceof Err;
+		return (this instanceof Err);
 	}
 
 	isOkAnd(predicate) {
-		return this instanceof Ok && predicate(this.value);
+		return (this instanceof Ok) && predicate(this.value);
 	}
 	isErrAnd(predicate) {
-		return this instanceof Err && predicate(this.error);
+		return (this instanceof Err) && predicate(this.error);
 	}
 
 	OkToOption() {
-		return this instanceof Ok ? new Some(this.value) : new None();
+		return (this instanceof Ok) ? new Some(this.value) : new None();
 	}
 	ErrToOption() {
-		return this instanceof Err ? new Some(this.error) : new None();
+		return (this instanceof Err) ? new Some(this.error) : new None();
 	}
 
 	expectOk(error) {
@@ -41,21 +41,21 @@ class Result {
 	}
 
 	expectOkOr(defaultValue) {
-		return this instanceof Ok ? this.value : defaultValue;
+		return (this instanceof Ok) ? this.value : defaultValue;
 	}
 	expectErrOr(defaultValue) {
-		return this instanceof Err ? this.error : defaultValue;
+		return (this instanceof Err) ? this.error : defaultValue;
 	}
 
 	mapOk(fn) {
-		return this instanceof Ok ? Result.Ok(fn(this.value)) : Result.Err(this.error);
+		return (this instanceof Ok) ? Result.Ok(fn(this.value)) : Result.Err(this.error);
 	}
 	mapErr(fn) {
-		return this instanceof Err ? Result.Err(fn(this.error)) : Result.Ok(this.value);
+		return (this instanceof Err) ? Result.Err(fn(this.error)) : Result.Ok(this.value);
 	}
 
 	match(onOk, onErr) {
-		return this instanceof Ok ? onOk(this.value) : onErr(this.error);
+		return (this instanceof Ok) ? onOk(this.value) : onErr(this.error);
 	}
 }
 
